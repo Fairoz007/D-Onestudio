@@ -47,15 +47,15 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[100svh] flex flex-col justify-center overflow-hidden pt-24 pb-32 lg:pb-16"
     >
       {/* Premium subtle background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[#030303]" />
         
         {/* Subtle, wide ambient lights instead of pulsing bright orbs */}
-        <div className="absolute top-0 right-0 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] rounded-full bg-done/5 blur-[150px] opacity-60 translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full bg-done-dark/5 blur-[150px] opacity-50 -translate-x-1/3 translate-y-1/3" />
+        <div className="absolute top-0 right-0 w-[100vw] lg:w-[80vw] h-[100vw] lg:h-[80vw] max-w-[1000px] max-h-[1000px] rounded-full bg-done/5 blur-[100px] lg:blur-[150px] opacity-60 translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[80vw] lg:w-[60vw] h-[80vw] lg:h-[60vw] max-w-[800px] max-h-[800px] rounded-full bg-done-dark/5 blur-[100px] lg:blur-[150px] opacity-50 -translate-x-1/3 translate-y-1/3" />
         
         {/* Micro-grid pattern */}
         <div
@@ -68,17 +68,17 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 lg:px-16 pt-20">
+      <div className="relative z-10 w-full px-6 lg:px-16">
         {/* Main Title */}
         <h1
           ref={titleRef}
-          className="font-orbitron text-[15vw] lg:text-[14vw] font-black leading-none tracking-tighter text-white opacity-0 select-none"
+          className="font-orbitron text-[18vw] md:text-[16vw] lg:text-[14vw] font-black leading-none tracking-tighter text-white opacity-0 select-none"
         >
           D-ONE
         </h1>
 
         {/* Description */}
-        <div className="mt-6 lg:mt-8 ml-2 max-w-xl">
+        <div className="mt-6 lg:mt-8 ml-1 lg:ml-2 max-w-xl">
           <p ref={descRef} className="font-inter text-sm lg:text-lg text-gray-400 leading-relaxed opacity-0 font-light">
             An independent game development studio pushing boundaries.<br className="hidden sm:block" />
             <span className="text-white font-medium mt-2 inline-block tracking-wide">
@@ -88,34 +88,34 @@ export default function HeroSection() {
         </div>
 
         {/* CTA Buttons */}
-        <div ref={ctaRef} className="flex flex-wrap items-center gap-4 mt-10 ml-2 opacity-0">
-          <button className="neon-button group">
-            <span className="flex items-center gap-2">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-8 lg:mt-10 ml-0 lg:ml-2 opacity-0">
+          <button className="neon-button group w-full sm:w-auto">
+            <span className="flex items-center justify-center gap-2">
               EXPLORE GAMES
               <Gamepad2 className="w-4 h-4 transition-transform group-hover:scale-110" />
             </span>
           </button>
-          <button className="neon-button-outline group">
-            <span className="flex items-center gap-2">
+          <button className="neon-button-outline group w-full sm:w-auto">
+            <span className="flex items-center justify-center gap-2">
               WATCH REEL
               <Play className="w-3 h-3 fill-current transition-transform group-hover:scale-110" />
             </span>
           </button>
         </div>
+      </div>
 
-        {/* STUDIO - background text */}
-        <h2
-          ref={subtitleRef}
-          className="absolute bottom-16 right-6 lg:right-16 font-orbitron text-[14vw] lg:text-[12vw] font-black leading-none tracking-tighter text-transparent opacity-0 select-none pointer-events-none text-stroke"
-        >
-          STUDIO
-        </h2>
+      {/* STUDIO - background text */}
+      <h2
+        ref={subtitleRef}
+        className="absolute bottom-24 lg:bottom-16 right-4 lg:right-16 font-orbitron text-[18vw] md:text-[16vw] lg:text-[12vw] font-black leading-none tracking-tighter text-transparent opacity-0 select-none pointer-events-none text-stroke"
+      >
+        STUDIO
+      </h2>
 
-        {/* Tagline bottom */}
-        <div ref={taglineRef} className="absolute bottom-8 left-6 lg:left-16 flex items-center gap-4 opacity-0">
-          <span className="w-12 h-[1px] bg-done/60" />
-          <span className="font-orbitron text-xs text-white/80 tracking-[0.3em]">IDEAS. BUILT. D-ONE.</span>
-        </div>
+      {/* Tagline bottom */}
+      <div ref={taglineRef} className="absolute bottom-6 lg:bottom-8 left-6 lg:left-16 flex items-center gap-3 lg:gap-4 opacity-0">
+        <span className="w-8 lg:w-12 h-[1px] bg-done/60" />
+        <span className="font-orbitron text-[10px] lg:text-xs text-white/80 tracking-[0.2em] lg:tracking-[0.3em]">IDEAS. BUILT. D-ONE.</span>
       </div>
     </section>
   )
