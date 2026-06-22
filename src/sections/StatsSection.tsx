@@ -73,13 +73,14 @@ export default function StatsSection() {
       className="relative w-full py-20 lg:py-28 bg-[#030303] border-y border-white/5"
     >
       <div className="w-full px-6 lg:px-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 divide-x divide-white/5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {stats.map((stat, index) => (
-            <div key={index} className="stat-item text-center px-4 opacity-0">
-              <div className="font-orbitron text-3xl lg:text-5xl font-black text-transparent text-stroke-done drop-shadow-[0_0_15px_rgba(255,106,8,0.2)] mb-2 tracking-tight">
+            <div key={index} className="stat-item text-center px-4 opacity-0 relative group">
+              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-12 bg-white/5 group-last:hidden" />
+              <div className="font-orbitron text-4xl sm:text-3xl lg:text-5xl font-black text-transparent text-stroke-done drop-shadow-[0_0_15px_rgba(255,106,8,0.2)] mb-3 tracking-tight">
                 <CountUp end={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="font-inter text-xs lg:text-sm text-gray-400 uppercase tracking-widest font-medium">
+              <p className="font-inter text-sm text-gray-400 uppercase tracking-widest font-medium">
                 {stat.label}
               </p>
             </div>
