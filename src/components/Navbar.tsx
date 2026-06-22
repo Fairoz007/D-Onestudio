@@ -56,10 +56,10 @@ export default function Navbar() {
             <button
               key={link.label}
               onClick={() => scrollToSection(link.href)}
-              className="relative font-orbitron text-[11px] tracking-widest text-gray-300 hover:text-white transition-colors group py-2"
+              className="relative font-exo text-xs font-bold tracking-[0.2em] uppercase text-gray-300 hover:text-white transition-colors group py-2"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-done transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-done transition-all duration-300 group-hover:w-full shadow-[0_0_10px_rgba(255,106,8,0.8)]" />
             </button>
           ))}
         </div>
@@ -68,7 +68,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <button
             onClick={() => scrollToSection('#contact')}
-            className="hidden lg:flex neon-button text-[10px]"
+            className="hidden lg:flex neon-button-outline text-xs"
           >
             LET'S TALK
           </button>
@@ -94,7 +94,7 @@ export default function Navbar() {
             <button
               key={link.label}
               onClick={() => scrollToSection(link.href)}
-              className="block w-full text-left font-orbitron text-sm tracking-widest text-gray-300 hover:text-white transition-colors py-2"
+              className="block w-full text-left font-exo text-sm font-bold tracking-widest text-gray-300 hover:text-done transition-colors py-2 uppercase"
             >
               {link.label}
             </button>

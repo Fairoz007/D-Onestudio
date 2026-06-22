@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Gamepad2, Users, Server, Star } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: string; duration?: number }) {
+function CountUp({ end, suffix = '', prefix = '', duration = 2, padZero = false }: { end: number; suffix?: string; prefix?: string; duration?: number; padZero?: boolean }) {
   const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
   const hasAnimated = useRef(false)
@@ -32,18 +33,20 @@ function CountUp({ end, suffix = '', duration = 2 }: { end: number; suffix?: str
     return () => trigger.kill()
   }, [end, duration])
 
+  const formattedCount = padZero ? count.toString().padStart(2, '0') : count.toLocaleString()
+
   return (
     <span ref={ref}>
-      {count.toLocaleString()}{suffix}
+      {prefix}{formattedCount}{suffix}
     </span>
   )
 }
 
 const stats = [
-  { label: 'Projects Completed', value: 50, suffix: '+' },
-  { label: 'Games Released', value: 12, suffix: '' },
-  { label: 'Active Players', value: 100000, suffix: '+' },
-  { label: 'Development Hours', value: 50000, suffix: '+' },
+  { label: 'GAMES RELEASED', value: 1, suffix: '', padZero: true, Icon: Gamepad2 },
+  { label: 'PLAYERS REACHED', value: 1000, suffix: '+', padZero: false, Icon: Users },
+  { label: 'ONLINE SYSTEMS', value: 24, suffix: '/7', padZero: false, Icon: Server },
+  { label: 'PLAYER FOCUSED', value: 100, suffix: '%', padZero: false, Icon: Star },
 ]
 
 export default function StatsSection() {
@@ -53,12 +56,12 @@ export default function StatsSection() {
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>('.stat-item').forEach((item, i) => {
         gsap.fromTo(item,
-          { opacity: 0, scale: 0.9, y: 30 },
+          { opacity: 0, x: -20 },
           {
-            opacity: 1, scale: 1, y: 0, duration: 0.8,
+            opacity: 1, x: 0, duration: 0.8,
             delay: i * 0.1,
-            ease: 'back.out(1.5)',
-            scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
+            ease: 'power3.out',
+            scrollTrigger: { trigger: sectionRef.current, start: 'top 85%' },
           }
         )
       })
@@ -70,19 +73,32 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-20 lg:py-28 bg-[#030303] border-y border-white/5"
+      className="relative w-full py-12 lg:py-16 bg-[#000000] border-y border-[#FF6A08]/10"
     >
-      <div className="w-full px-6 lg:px-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      {/* Decorative top border glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-[#FF6A08] to-transparent shadow-[0_0_10px_rgba(255,106,8,0.8)]" />
+
+      <div className="w-full px-6 lg:px-16 max-w-[1400px] mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-8">
           {stats.map((stat, index) => (
-            <div key={index} className="stat-item text-center px-4 opacity-0 relative group">
-              <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-12 bg-white/5 group-last:hidden" />
-              <div className="font-orbitron text-4xl sm:text-3xl lg:text-5xl font-black text-transparent text-stroke-done drop-shadow-[0_0_15px_rgba(255,106,8,0.2)] mb-3 tracking-tight">
-                <CountUp end={stat.value} suffix={stat.suffix} />
+            <div key={index} className="stat-item flex items-center gap-6 opacity-0 relative group w-full md:w-auto justify-center md:justify-start">
+              {/* Divider between items on desktop */}
+              {index !== stats.length - 1 && (
+                <div className="hidden md:block absolute -right-6 lg:-right-12 top-1/2 -translate-y-1/2 w-[1px] h-12 bg-white/5" />
+              )}
+              
+              <div className="text-[#FF6A08] group-hover:drop-shadow-[0_0_10px_rgba(255,106,8,0.5)] transition-all duration-300">
+                <stat.Icon className="w-10 h-10 lg:w-12 lg:h-12" strokeWidth={1.5} />
               </div>
-              <p className="font-inter text-sm text-gray-400 uppercase tracking-widest font-medium">
-                {stat.label}
-              </p>
+              
+              <div className="flex flex-col">
+                <div className="font-space text-3xl lg:text-4xl font-bold text-[#FF6A08] tracking-tighter mb-1 drop-shadow-[0_0_8px_rgba(255,106,8,0.3)]">
+                  <CountUp end={stat.value} suffix={stat.suffix} padZero={stat.padZero} />
+                </div>
+                <p className="font-exo text-xs lg:text-sm text-gray-400 uppercase tracking-widest font-bold">
+                  {stat.label}
+                </p>
+              </div>
             </div>
           ))}
         </div>

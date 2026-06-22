@@ -1,45 +1,60 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Zap, Palette, Star, Users, Target } from 'lucide-react'
+import { Lightbulb, Target, ArrowRight, CheckCircle } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const coreValues = [
-  { icon: Zap, title: 'INNOVATION', desc: 'Always exploring new ideas and technologies to push creative boundaries.' },
-  { icon: Palette, title: 'CREATIVITY', desc: 'Building memorable and unique experiences that players remember.' },
-  { icon: Star, title: 'QUALITY', desc: 'Maintaining high standards in every product we develop and deliver.' },
-  { icon: Users, title: 'COMMUNITY', desc: 'Creating games that bring people together across the world.' },
-  { icon: Target, title: 'EXECUTION', desc: 'Turning ambitious concepts into polished, production-ready reality.' },
+const philosophies = [
+  {
+    id: '01',
+    title: 'DREAM',
+    description: 'Every great game begins with imagination and ambition.',
+    Icon: Lightbulb,
+  },
+  {
+    id: '02',
+    title: 'ORIGINALITY',
+    description: 'We create unique experiences, mechanics, and worlds.',
+    Icon: Target,
+  },
+  {
+    id: '03',
+    title: 'NEXT',
+    description: 'We explore new technologies and push creative boundaries.',
+    Icon: ArrowRight,
+  },
+  {
+    id: '04',
+    title: 'EXECUTE',
+    description: 'Ideas become reality through discipline, quality, and execution.',
+    Icon: CheckCircle,
+  },
 ]
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Fade in section blocks
-      gsap.utils.toArray<HTMLElement>('.about-block').forEach((block, i) => {
-        gsap.fromTo(block,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1, y: 0, duration: 0.8,
-            delay: i * 0.1,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: block, start: 'top 80%' },
-          }
-        )
-      })
+      // Header animation
+      gsap.fromTo(headerRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' }
+        }
+      )
 
-      // Core value cards animation
-      gsap.utils.toArray<HTMLElement>('.value-card').forEach((card, i) => {
+      // Cards animation
+      gsap.utils.toArray<HTMLElement>('.philosophy-card').forEach((card, i) => {
         gsap.fromTo(card,
-          { opacity: 0, y: 30, scale: 0.95 },
+          { opacity: 0, y: 50 },
           {
-            opacity: 1, y: 0, scale: 1, duration: 0.6,
-            delay: i * 0.08,
+            opacity: 1, y: 0, duration: 0.8, delay: i * 0.15 + 0.2,
             ease: 'power3.out',
-            scrollTrigger: { trigger: '.values-grid', start: 'top 85%' },
+            scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' }
           }
         )
       })
@@ -49,87 +64,59 @@ export default function AboutSection() {
   }, [])
 
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="relative w-full py-24 lg:py-32 bg-[#030303] overflow-hidden"
-    >
-      <div className="w-full px-6 lg:px-16 max-w-7xl mx-auto">
-        
-        {/* Top Header / Slogan */}
-        <div className="text-center mb-20 about-block opacity-0">
-          <div className="section-label justify-center mb-6">
-            <span>ABOUT D-ONE STUDIO</span>
-          </div>
-          <h2 className="font-orbitron text-3xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 tracking-tight leading-tight">
-            ONE VISION • ONE TEAM • ONE FUTURE
-          </h2>
-        </div>
+    <section id="about" ref={sectionRef} className="relative w-full py-24 lg:py-32 bg-[#000000]">
+      {/* Decorative background element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-[#FF6A08]/5 blur-[120px] rounded-full pointer-events-none" />
 
-        {/* Who We Are & Mission / Vision */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-24">
-          
-          {/* Left Side: Who We Are */}
-          <div className="about-block opacity-0">
-            <h3 className="font-orbitron text-2xl lg:text-3xl font-bold mb-6 flex items-center gap-4">
-              <span className="w-8 h-[2px] bg-done"></span> WHO WE ARE
-            </h3>
-            <p className="font-inter text-gray-400 text-base leading-relaxed mb-6">
-              D-ONE Studio is an independent game development studio focused on creating immersive, innovative, and player-first gaming experiences. 
-              We transform ideas into engaging digital products that connect players worldwide.
-            </p>
-            <p className="font-inter text-gray-400 text-base leading-relaxed">
-              We operate at the intersection of stunning design and flawless engineering, building multiplayer architectures and vibrant virtual worlds for a global community of gamers.
-            </p>
-          </div>
-
-          {/* Right Side: Mission & Vision */}
-          <div className="space-y-8 about-block opacity-0">
-            <div className="glass-panel p-8 rounded-2xl border-l-4 border-l-done hover:border-l-[#fd5702] transition-colors duration-300">
-              <h4 className="font-orbitron text-xl font-bold text-white mb-3">OUR MISSION</h4>
-              <p className="font-inter text-sm text-gray-400 leading-relaxed">
-                To build innovative, memorable, and player-focused games that inspire communities and deliver meaningful entertainment experiences across platforms.
-              </p>
+      <div className="relative z-10 w-full px-6 lg:px-16 max-w-[1400px] mx-auto">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-16">
+          <div ref={headerRef} className="max-w-2xl opacity-0">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="w-8 h-[2px] bg-[#FF6A08]" />
+              <span className="font-exo text-xs font-bold tracking-[0.3em] uppercase text-[#FF6A08]">
+                Our Philosophy
+              </span>
             </div>
-            
-            <div className="glass-panel p-8 rounded-2xl border-l-4 border-l-done hover:border-l-[#fd5702] transition-colors duration-300">
-              <h4 className="font-orbitron text-xl font-bold text-white mb-3">OUR VISION</h4>
-              <p className="font-inter text-sm text-gray-400 leading-relaxed">
-                To become a globally recognized game development studio known for creativity, technological innovation, and exceptional game quality.
-              </p>
-            </div>
+            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight uppercase tracking-tighter">
+              Our Approach<br />To Game Development
+            </h2>
           </div>
         </div>
 
-        {/* Core Values */}
-        <div className="about-block opacity-0">
-          <div className="text-center mb-12">
-            <h3 className="font-orbitron text-2xl lg:text-3xl font-bold">CORE VALUES</h3>
-          </div>
-          
-          <div className="values-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {coreValues.map((value, index) => {
-              const Icon = value.icon
-              return (
-                <div
-                  key={index}
-                  className="value-card glass-panel rounded-2xl p-6 text-center opacity-0 hover:border-done/30 transition-all duration-500 group cursor-pointer card-hover"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-done/10 group-hover:border-done/20 transition-all duration-300">
-                    <Icon className="w-5 h-5 text-gray-300 group-hover:text-done transition-colors" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {philosophies.map((item) => (
+            <div key={item.id} className="philosophy-card opacity-0 glass-panel p-8 rounded-xl card-hover group relative overflow-hidden flex flex-col h-full min-h-[300px]">
+              
+              {/* Subtle grid overlay */}
+              <div className="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity"
+                style={{
+                  backgroundImage: `linear-gradient(rgba(255, 106, 8, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 106, 8, 1) 1px, transparent 1px)`,
+                  backgroundSize: '20px 20px',
+                }}
+              />
+              
+              {/* ID Number */}
+              <div className="absolute bottom-6 left-6 font-space text-5xl font-black text-white/5 group-hover:text-[#FF6A08]/10 transition-colors duration-500 pointer-events-none">
+                {item.id}
+              </div>
+
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-black/50 border border-white/5 group-hover:border-[#FF6A08]/30 group-hover:bg-[#FF6A08]/10 transition-colors">
+                    <item.Icon className="w-6 h-6 text-[#FF6A08]" />
                   </div>
-                  <h4 className="font-orbitron text-sm font-bold mb-3 text-white group-hover:text-done transition-colors">
-                    {value.title}
-                  </h4>
-                  <p className="font-inter text-xs text-gray-400 leading-relaxed">
-                    {value.desc}
-                  </p>
+                  <h3 className="font-exo text-xl font-bold tracking-widest text-[#FF6A08] uppercase">
+                    {item.title}
+                  </h3>
                 </div>
-              )
-            })}
-          </div>
+
+                <p className="font-inter text-gray-400 leading-relaxed text-sm group-hover:text-gray-300 transition-colors flex-grow">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-        
       </div>
     </section>
   )

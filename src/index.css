@@ -35,7 +35,7 @@
   }
 
   body {
-    @apply bg-[#030303] text-white antialiased;
+    @apply bg-[#000000] text-[#FEFDFE] antialiased;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
   }
@@ -55,25 +55,33 @@
     font-family: 'Inter', sans-serif;
   }
 
+  .font-space {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-exo {
+    font-family: 'Exo 2', sans-serif;
+  }
+
   .glass-panel {
-    background: rgba(10, 10, 10, 0.6);
+    background: rgba(5, 5, 5, 0.7);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 106, 8, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255,106,8,0.05), 0 8px 32px rgba(0,0,0,0.8);
   }
 
   .glass-nav {
-    background: rgba(3, 3, 3, 0.7);
+    background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 106, 8, 0.15);
   }
 
   .neon-button {
-    @apply relative inline-flex items-center justify-center px-6 py-3 font-orbitron text-xs font-bold tracking-wider uppercase text-black transition-all duration-300;
-    background: linear-gradient(135deg, #ff6a08, #fd5702);
-    clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-space text-sm font-bold tracking-wider uppercase text-black transition-all duration-300;
+    background: linear-gradient(135deg, #FF6A08, #FD5702);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   }
 
   .neon-button:hover {
@@ -83,9 +91,9 @@
   }
 
   .neon-button-outline {
-    @apply relative inline-flex items-center justify-center px-6 py-3 font-orbitron text-xs font-bold tracking-wider uppercase text-done transition-all duration-300 bg-transparent;
-    border: 1px solid rgba(255, 106, 8, 0.2);
-    clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-space text-sm font-bold tracking-wider uppercase text-[#FF6A08] transition-all duration-300 bg-transparent;
+    border: 1px solid rgba(255, 106, 8, 0.3);
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   }
 
   .neon-button-outline:hover {
@@ -115,8 +123,8 @@
 
   .card-hover:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 106, 8, 0.2);
+    box-shadow: 0 20px 40px rgba(255, 106, 8, 0.1);
   }
 
   .marquee-track {

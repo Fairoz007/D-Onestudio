@@ -1,136 +1,137 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Mail, MessageSquare, Twitter, DiscIcon as Discord, Linkedin } from 'lucide-react'
+import { Mail, Send, Github, Twitter, Linkedin, Discord } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.contact-element',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
-        }
-      )
+      gsap.utils.toArray<HTMLElement>('.fade-up-contact').forEach((el, i) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8,
+            delay: i * 0.1,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
+          }
+        )
+      })
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert('Thank you for reaching out! D-ONE Studio will get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
-  }
-
   return (
     <section
       id="contact"
       ref={sectionRef}
-      className="relative w-full py-24 lg:py-32 bg-[#030303]"
+      className="relative w-full py-24 lg:py-32 bg-[#000000] border-t border-[#FF6A08]/10 overflow-hidden"
     >
-      <div className="w-full px-6 lg:px-16 max-w-7xl mx-auto">
+      {/* Decorative background grid */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255, 106, 8, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 106, 8, 1) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#FF6A08]/5 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="w-full px-6 lg:px-16 max-w-[1400px] mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
-          {/* Left: Branding & Info */}
-          <div className="contact-element opacity-0">
-            <div className="section-label mb-6">
-              <span>GET IN TOUCH</span>
+          {/* Left Side: Contact Info */}
+          <div className="flex flex-col fade-up-contact">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="w-8 h-[2px] bg-[#FF6A08]" />
+              <span className="font-exo text-xs font-bold tracking-[0.3em] uppercase text-[#FF6A08]">GET IN TOUCH</span>
             </div>
-            <h2 className="font-orbitron text-4xl lg:text-6xl font-black mb-6">
-              LET'S <span className="text-done">CONNECT</span>
+            <h2 className="font-space text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter mb-8">
+              LET'S CONNECT
             </h2>
-            
-            <div className="space-y-6 mb-12">
-              <h3 className="font-orbitron text-xl font-bold text-white">D-ONE STUDIO</h3>
-              <p className="font-inter text-gray-400 text-base leading-relaxed max-w-md">
-                Independent Game Development Studio.<br/>
-                <span className="text-white font-medium mt-2 block">Dream • Originality • Next • Execute</span>
-              </p>
-              <p className="font-inter text-gray-500 text-sm max-w-md">
-                Building innovative gaming experiences for the future. Whether you want to collaborate, join the team, or just say hi—we'd love to hear from you.
-              </p>
+
+            <div className="glass-panel p-8 rounded-xl border-l-4 border-l-[#FF6A08] mb-10">
+              <h3 className="font-space text-2xl font-bold text-white mb-2 tracking-wide">
+                D-ONE STUDIO
+              </h3>
+              <p className="font-inter text-sm text-gray-400 mb-4">Independent Game Development Studio.</p>
+              <div className="font-exo text-xs font-bold tracking-[0.2em] text-[#FF6A08] uppercase">
+                Dream • Originality • Next • Execute
+              </div>
             </div>
 
-            {/* Email Section */}
-            <div className="flex items-center gap-4 mb-10">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                <Mail className="w-5 h-5 text-done" />
-              </div>
+            <p className="font-inter text-gray-400 leading-relaxed max-w-md mb-12">
+              Building innovative gaming experiences for the future. Whether you want to collaborate, join the team, or just say hi—we'd love to hear from you.
+            </p>
+
+            <div className="space-y-6">
               <div>
-                <span className="block font-inter text-xs text-gray-500 uppercase tracking-widest mb-1">Email Us</span>
-                <a href="mailto:hello@d-one.studio" className="font-orbitron text-white font-bold hover:text-done transition-colors">hello@d-one.studio</a>
+                <p className="font-exo text-xs font-bold tracking-widest text-gray-500 uppercase mb-2">Email Us</p>
+                <a href="mailto:hello@d-one.studio" className="font-space text-xl text-white hover:text-[#FF6A08] transition-colors flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-[#FF6A08]" />
+                  hello@d-one.studio
+                </a>
               </div>
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <span className="block font-inter text-xs text-gray-500 uppercase tracking-widest mb-4">Follow Us</span>
-              <div className="flex items-center gap-4">
-                {[Twitter, Discord, Linkedin, MessageSquare].map((Icon, i) => (
-                  <button key={i} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:bg-done hover:text-black hover:border-done transition-all duration-300">
-                    <Icon className="w-4 h-4" />
-                  </button>
-                ))}
+              
+              <div className="pt-6 border-t border-white/5">
+                <p className="font-exo text-xs font-bold tracking-widest text-gray-500 uppercase mb-4">Follow Us</p>
+                <div className="flex items-center gap-4">
+                  {[Twitter, Linkedin, Github, Discord].map((Icon, idx) => (
+                    <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-[#FF6A08] hover:bg-[#FF6A08]/10 transition-colors group">
+                      <Icon className="w-4 h-4 text-gray-400 group-hover:text-[#FF6A08] transition-colors" />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right: Contact Form */}
-          <div className="contact-element opacity-0">
-            <div className="glass-panel p-8 lg:p-10 rounded-3xl border-t-4 border-t-[#fd5702]">
-              <h3 className="font-orbitron text-2xl font-bold text-white mb-8">SEND A MESSAGE</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block font-inter text-xs text-gray-400 uppercase tracking-wider mb-2">Your Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-5 py-4 bg-[#030303] border border-white/10 rounded-xl font-inter text-sm text-white placeholder-gray-600 focus:border-done focus:outline-none transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label className="block font-inter text-xs text-gray-400 uppercase tracking-wider mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-5 py-4 bg-[#030303] border border-white/10 rounded-xl font-inter text-sm text-white placeholder-gray-600 focus:border-done focus:outline-none transition-colors"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                <div>
-                  <label className="block font-inter text-xs text-gray-400 uppercase tracking-wider mb-2">Message</label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-5 py-4 bg-[#030303] border border-white/10 rounded-xl font-inter text-sm text-white placeholder-gray-600 focus:border-done focus:outline-none transition-colors resize-none"
-                    placeholder="How can we help you?"
-                  />
-                </div>
-                <button type="submit" className="neon-button w-full">
+          {/* Right Side: Contact Form */}
+          <div className="fade-up-contact">
+            <form className="glass-panel p-8 lg:p-10 rounded-xl flex flex-col gap-6 relative overflow-hidden">
+              {/* Form decorative corner */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-[#FF6A08]/10 blur-[20px]" />
+              
+              <div className="flex flex-col gap-2">
+                <label className="font-exo text-xs font-bold tracking-widest text-[#FF6A08] uppercase">Your Name</label>
+                <input 
+                  type="text" 
+                  placeholder="John Doe"
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 font-inter text-white placeholder:text-gray-600 focus:outline-none focus:border-[#FF6A08] focus:ring-1 focus:ring-[#FF6A08] transition-all"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="font-exo text-xs font-bold tracking-widest text-[#FF6A08] uppercase">Email Address</label>
+                <input 
+                  type="email" 
+                  placeholder="john@example.com"
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 font-inter text-white placeholder:text-gray-600 focus:outline-none focus:border-[#FF6A08] focus:ring-1 focus:ring-[#FF6A08] transition-all"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="font-exo text-xs font-bold tracking-widest text-[#FF6A08] uppercase">Message</label>
+                <textarea 
+                  rows={4}
+                  placeholder="How can we help you?"
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 font-inter text-white placeholder:text-gray-600 focus:outline-none focus:border-[#FF6A08] focus:ring-1 focus:ring-[#FF6A08] transition-all resize-none"
+                />
+              </div>
+
+              <button type="button" className="neon-button group/btn mt-4">
+                <span className="flex items-center justify-center gap-2">
                   SUBMIT MESSAGE
-                </button>
-              </form>
-            </div>
+                  <Send className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                </span>
+              </button>
+            </form>
           </div>
-
+          
         </div>
       </div>
     </section>

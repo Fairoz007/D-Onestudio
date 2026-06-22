@@ -7,7 +7,6 @@ import HeroSection from './sections/HeroSection'
 import MarqueeText from './sections/MarqueeText'
 import AboutSection from './sections/AboutSection'
 import ServicesSection from './sections/ServicesSection'
-import FeaturedGame from './sections/FeaturedGame'
 import ProcessSection from './sections/ProcessSection'
 import TechStackSection from './sections/TechStackSection'
 import StatsSection from './sections/StatsSection'
@@ -65,7 +64,6 @@ function App() {
           <MarqueeText />
           <AboutSection />
           <ServicesSection />
-          <FeaturedGame />
           <ProcessSection />
           <TechStackSection />
           <StatsSection />
