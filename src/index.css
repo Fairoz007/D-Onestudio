@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 22 100% 52%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 5%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 215 16% 62%;
+    --accent: 22 100% 52%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 12%;
+    --input: 0 0% 10%;
+    --ring: 22 100% 52%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#030303] text-white antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(255, 106, 8, 0.3);
+    color: white;
+  }
+}
+
+@layer components {
+  .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .glass-panel {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .glass-nav {
+    background: rgba(3, 3, 3, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .neon-button {
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-orbitron text-xs font-bold tracking-wider uppercase text-black transition-all duration-300;
+    background: linear-gradient(135deg, #ff6a08, #fd5702);
+    clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  }
+
+  .neon-button:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 15px rgba(255, 106, 8, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .neon-button-outline {
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-orbitron text-xs font-bold tracking-wider uppercase text-done transition-all duration-300 bg-transparent;
+    border: 1px solid rgba(255, 106, 8, 0.2);
+    clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  }
+
+  .neon-button-outline:hover {
+    background: rgba(255, 106, 8, 0.05);
+    border-color: #ff6a08;
+    box-shadow: 0 4px 15px rgba(255, 106, 8, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .section-label {
+    @apply flex items-center gap-3 font-orbitron text-[10px] font-semibold tracking-[0.2em] uppercase text-done;
+  }
+
+  .section-label::after {
+    content: '';
+    @apply block h-[1px] w-8 bg-done/50;
+  }
+
+  .section-label::before {
+    content: '';
+    @apply block h-1 w-1 rounded-full bg-done;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 border border-transparent;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .marquee-track {
+    display: flex;
+    animation: marquee-scroll 30s linear infinite;
+  }
+
+  .marquee-track-reverse {
+    display: flex;
+    animation: marquee-scroll-reverse 35s linear infinite;
+  }
+
+  .pulse-dot {
+    animation: pulse-dot 2.5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .text-stroke-done {
+    -webkit-text-stroke: 1px rgba(255, 106, 8, 0.2);
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
