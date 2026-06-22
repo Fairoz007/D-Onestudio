@@ -1,47 +1,41 @@
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-black overflow-hidden">
-      {/* Top info bar */}
-      <div className="w-full px-6 lg:px-16 py-6 border-t border-gray-800">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-          <span className="font-orbitron text-xs text-gray-500">Dream • Originality • Next • Execute</span>
-          <span className="font-orbitron text-sm font-bold text-white">D-ONE STUDIO</span>
-          <span className="font-inter text-xs text-gray-500">Independent Game Development</span>
-        </div>
-      </div>
-
-      {/* Orange accent line */}
-      <div className="w-full h-[2px] bg-gradient-to-r from-done via-done-dark to-transparent" />
-
-      {/* Main CTA area */}
-      <div className="w-full px-6 lg:px-16 py-24 lg:py-40 text-center">
-        <div className="section-label justify-center mb-6">
-          <span>HAVE A PROJECT IN MIND?</span>
+    <footer className="relative w-full bg-[#000000] overflow-hidden pt-16 pb-8 border-t border-white/5">
+      <div className="w-full px-6 lg:px-16 max-w-7xl mx-auto flex flex-col items-center text-center">
+        
+        {/* Logo */}
+        <div className="mb-8">
+          <img 
+            src="/logo/logo.png" 
+            alt="D-ONE Studio Logo" 
+            className="h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,106,8,0.1)]"
+          />
         </div>
 
-        <h2 className="font-orbitron text-[12vw] lg:text-[10vw] font-black leading-none tracking-tighter animate-glow-pulse">
-          LET'S<br />BUILD
-        </h2>
-
-        <button className="neon-button mt-12 mx-auto">
-          GET IN TOUCH
-        </button>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="w-full px-6 lg:px-16 py-6 border-t border-gray-800">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <img src="/logo/logo.png" alt="D-ONE" className="h-6 w-auto" />
-            <span className="font-orbitron text-[10px] text-gray-600 tracking-wider">D-ONE STUDIO</span>
-          </div>
-
-          <span className="font-inter text-[10px] text-gray-500">
+        {/* Taglines */}
+        <div className="space-y-4 mb-12">
+          <h2 className="font-orbitron text-xl lg:text-2xl font-black text-white tracking-widest uppercase">
+            D-ONE STUDIO
+          </h2>
+          <p className="font-orbitron text-sm text-done tracking-[0.2em] uppercase">
             Ideas. Built. D-ONE.
-          </span>
-
-          <span className="font-inter text-[10px] text-gray-600">Copyright © 2025 D-ONE Studio</span>
+          </p>
+          <p className="font-inter text-gray-500 text-sm tracking-wide">
+            One Vision • One Team • One Future
+          </p>
         </div>
+
+        {/* Bottom Bar */}
+        <div className="w-full pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+          <span className="font-inter text-xs text-gray-600">
+            © {new Date().getFullYear()} D-ONE Studio. All rights reserved.
+          </span>
+          <div className="flex items-center gap-6">
+            <a href="#" className="font-inter text-xs text-gray-600 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="font-inter text-xs text-gray-600 hover:text-white transition-colors">Terms of Service</a>
+          </div>
+        </div>
+        
       </div>
     </footer>
   )
