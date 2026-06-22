@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Mail, Send, Github, Twitter, Linkedin, Discord } from 'lucide-react'
+import { Mail, Send, Github, Twitter, Linkedin, MessageCircle } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -80,7 +80,7 @@ export default function ContactSection() {
               <div className="pt-6 border-t border-white/5">
                 <p className="font-exo text-xs font-bold tracking-widest text-gray-500 uppercase mb-4">Follow Us</p>
                 <div className="flex items-center gap-4">
-                  {[Twitter, Linkedin, Github, Discord].map((Icon, idx) => (
+                  {[Twitter, Linkedin, Github, MessageCircle].map((Icon, idx) => (
                     <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:border-[#FF6A08] hover:bg-[#FF6A08]/10 transition-colors group">
                       <Icon className="w-4 h-4 text-gray-400 group-hover:text-[#FF6A08] transition-colors" />
                     </a>

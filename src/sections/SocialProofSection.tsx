@@ -38,7 +38,7 @@ export default function SocialProofSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el, i) => {
+      gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
         gsap.fromTo(el,
           { opacity: 0, y: 30 },
           {
