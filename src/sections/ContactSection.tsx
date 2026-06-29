@@ -71,9 +71,9 @@ export default function ContactSection() {
             <div className="space-y-6">
               <div>
                 <p className="font-exo text-xs font-bold tracking-widest text-gray-500 uppercase mb-2">Email Us</p>
-                <a href="mailto:hello@d-one.studio" className="font-space text-xl text-white hover:text-[#FF6A08] transition-colors flex items-center gap-3">
+                <a href="mailto:info@donestudio.in" className="font-space text-xl text-white hover:text-[#FF6A08] transition-colors flex items-center gap-3">
                   <Mail className="w-5 h-5 text-[#FF6A08]" />
-                  hello@d-one.studio
+                  info@donestudio.in
                 </a>
               </div>
               
