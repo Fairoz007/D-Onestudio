@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Ensure AI bots can crawl the site for AEO (Answer Engine Optimization)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+# Uncomment and update the line below once the site is deployed:
+# Sitemap: https://yourdomain.com/sitemap.xml
