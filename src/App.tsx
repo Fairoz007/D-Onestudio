@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroSection from './sections/HeroSection'
+import AboutSection from './sections/AboutSection'
 import ContactSection from './sections/ContactSection'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -10,6 +11,7 @@ function App() {
     <div className="min-h-screen bg-[#030303] text-white font-inter overflow-x-hidden selection:bg-done/30 selection:text-white">
       <main>
         <HeroSection />
+        <AboutSection />
         <ContactSection />
       </main>
     </div>

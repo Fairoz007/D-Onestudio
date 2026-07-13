@@ -9,24 +9,24 @@ const philosophies = [
   {
     id: '01',
     title: 'DREAM',
-    description: 'Every great game begins with imagination and ambition.',
+    description: 'Every great idea begins with imagination and a vision to inspire.',
     Icon: Lightbulb,
   },
   {
     id: '02',
-    title: 'ORIGINALITY',
-    description: 'We create unique experiences, mechanics, and worlds.',
+    title: 'DESIGN',
+    description: 'We craft beautiful, user-centric interfaces and digital branding.',
     Icon: Target,
   },
   {
     id: '03',
-    title: 'NEXT',
-    description: 'We explore new technologies and push creative boundaries.',
+    title: 'DEVELOP',
+    description: 'We build fast, scalable, and future-ready digital solutions.',
     Icon: ArrowRight,
   },
   {
     id: '04',
-    title: 'EXECUTE',
+    title: 'DELIVER',
     description: 'Ideas become reality through discipline, quality, and execution.',
     Icon: CheckCircle,
   },
@@ -70,16 +70,27 @@ export default function AboutSection() {
 
       <div className="relative z-10 w-full px-6 lg:px-16 max-w-[1400px] mx-auto">
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-16">
-          <div ref={headerRef} className="max-w-2xl opacity-0">
+          <div ref={headerRef} className="max-w-4xl opacity-0">
             <div className="flex items-center gap-4 mb-6">
               <span className="w-8 h-[2px] bg-[#FF6A08]" />
               <span className="font-exo text-xs font-bold tracking-[0.3em] uppercase text-[#FF6A08]">
-                Our Philosophy
+                The Story
               </span>
             </div>
-            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight uppercase tracking-tighter">
-              Our Approach<br />To Game Development
+            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight uppercase tracking-tighter mb-8">
+              D-One Studio
             </h2>
+            <div className="font-inter text-gray-400 text-lg leading-relaxed space-y-4">
+              <p>
+                <strong>D-One Studio</strong> was founded by <strong>Fairoz Faisal</strong>, a passionate technology enthusiast, designer, and developer with a vision to create digital experiences that inspire people and solve real-world problems.
+              </p>
+              <p>
+                What started as a small freelance journey soon evolved into a full-service creative and technology studio. Driven by curiosity and innovation, Fairoz spent years mastering web development, cloud infrastructure, UI/UX design, DevOps, cybersecurity, branding, and automation.
+              </p>
+              <p>
+                From modern business websites and enterprise software to cloud solutions, AI-powered applications, and digital branding, D-One Studio combines creativity with technology to help businesses grow in the digital world. The name D-One represents a simple philosophy:
+              </p>
+            </div>
           </div>
         </div>
 
