@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Moon, Sun } from 'lucide-react'
 
 const navLinks = [
-  { label: 'ABOUT', href: '#about' },
-  { label: 'SERVICES', href: '#services' },
-  { label: 'GAMES', href: '#portfolio' },
-  { label: 'PROCESS', href: '#process' },
-  { label: 'CAREERS', href: '#careers' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Studio', href: '#studio' },
+  { label: 'Careers', href: '#careers' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Founder', href: '#founder' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -30,77 +32,99 @@ export default function Navbar() {
   }
 
   return (
-    <nav
+    <header
       id="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass-nav py-4 lg:py-6' : 'bg-transparent py-6 lg:py-8'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out h-[88px] flex items-center ${
+        scrolled 
+          ? 'bg-black/40 backdrop-blur-md border-b border-[rgba(255,255,255,0.08)]' 
+          : 'bg-transparent'
       }`}
     >
-      <div className="w-full px-6 lg:px-16 flex items-center justify-between">
-        {/* Logo */}
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 xl:px-[120px] flex items-center justify-between">
+        
+        {/* Left: Logo */}
         <a
-          href="#hero"
-          onClick={(e) => { e.preventDefault(); scrollToSection('#hero') }}
-          className="flex items-center gap-3 group relative"
+          href="#home"
+          onClick={(e) => { e.preventDefault(); scrollToSection('#home') }}
+          className="flex items-center gap-3 group relative shrink-0"
         >
           <img
             src="/logo/logo.png"
             alt="D-ONE Studio"
-            className="h-14 lg:h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="h-10 lg:h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
         </a>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-10">
+        {/* Center: Navigation */}
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8 xl:gap-10">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => scrollToSection(link.href)}
-              className="relative font-exo text-xs font-bold tracking-[0.2em] uppercase text-gray-300 hover:text-white transition-colors group py-2"
+              className="relative font-inter text-[13px] lg:text-[15px] font-medium text-text-secondary hover:text-white transition-all duration-300 group py-2 hover:-translate-y-0.5"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-done transition-all duration-300 group-hover:w-full shadow-[0_0_10px_rgba(255,106,8,0.8)]" />
+              {/* Thin orange underline & glow on hover */}
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-brand-primary transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100 shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
             </button>
           ))}
-        </div>
+        </nav>
 
-        {/* Right side */}
-        <div className="flex items-center gap-4">
+        {/* Right: Actions */}
+        <div className="flex items-center gap-3 lg:gap-5 shrink-0">
+          {/* Theme Toggle (Optional/Visual for now) */}
+          <button 
+            onClick={() => setIsDark(!isDark)}
+            className="hidden md:flex items-center justify-center w-10 h-10 rounded-full text-text-secondary hover:text-white hover:bg-white/5 transition-colors"
+            aria-label="Toggle Theme"
+          >
+            {isDark ? <Moon className="w-[18px] h-[18px]" /> : <Sun className="w-[18px] h-[18px]" />}
+          </button>
+
+          {/* Primary CTA */}
           <button
             onClick={() => scrollToSection('#contact')}
-            className="hidden lg:flex neon-button-outline text-xs"
+            className="hidden md:flex items-center justify-center h-10 lg:h-11 px-5 lg:px-7 rounded-full bg-gradient-cta text-white font-inter text-xs lg:text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-orange-glow hover:-translate-y-0.5"
           >
-            LET'S TALK
+            Start Your Project
           </button>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
+            className="md:hidden w-11 h-11 rounded-full border border-[rgba(255,255,255,0.08)] flex items-center justify-center hover:bg-white/5 transition-colors"
+            aria-label="Toggle Mobile Menu"
           >
-            {mobileOpen ? <X className="w-4 h-4 text-done" /> : <Menu className="w-4 h-4 text-gray-300" />}
+            {mobileOpen ? <X className="w-5 h-5 text-text-secondary" /> : <Menu className="w-5 h-5 text-text-secondary" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu Dropdown */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 glass-panel transition-all duration-300 overflow-hidden ${
-          mobileOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden absolute top-[88px] left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] transition-all duration-300 overflow-hidden ${
+          mobileOpen ? 'max-h-screen opacity-100 border-t border-[rgba(255,255,255,0.08)]' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="p-6 space-y-4">
+        <div className="px-6 py-8 flex flex-col gap-6">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => scrollToSection(link.href)}
-              className="block w-full text-left font-exo text-sm font-bold tracking-widest text-gray-300 hover:text-done transition-colors py-2 uppercase"
+              className="text-left font-inter text-lg font-medium text-text-secondary hover:text-brand-primary transition-colors"
             >
               {link.label}
             </button>
           ))}
+          <div className="h-px w-full bg-[rgba(255,255,255,0.08)] my-2" />
+          <button
+            onClick={() => scrollToSection('#contact')}
+            className="flex items-center justify-center h-12 w-full rounded-full bg-gradient-cta text-white font-inter text-[15px] font-semibold tracking-wide"
+          >
+            Start Your Project
+          </button>
         </div>
       </div>
-    </nav>
+    </header>
   )
 }
