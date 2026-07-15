@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Youtube, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function Blog() {
   useEffect(() => {
@@ -8,6 +9,11 @@ export default function Blog() {
 
   return (
     <div className="pt-32 pb-24 bg-background min-h-screen">
+      <Helmet>
+        <title>Development Blog | D-One Studio</title>
+        <meta name="description" content="Follow D-One Studio's game development journey. Read our dev logs, technology updates, and behind-the-scenes progress." />
+        <link rel="canonical" href="https://d-onestudio.com/blog" />
+      </Helmet>
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl animate-fade-in-up">
         
         {/* Header */}

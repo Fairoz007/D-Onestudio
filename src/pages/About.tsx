@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 export default function About() {
   useEffect(() => {
@@ -7,6 +8,11 @@ export default function About() {
 
   return (
     <div className="pt-32 pb-24 bg-background min-h-screen">
+      <Helmet>
+        <title>About Us | D-One Studio</title>
+        <meta name="description" content="Learn about D-One Studio's mission, vision, and core values. We are a new generation game development studio driven by a passion for creating unforgettable interactive experiences." />
+        <link rel="canonical" href="https://d-onestudio.com/about" />
+      </Helmet>
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl animate-fade-in-up">
         
         {/* Who We Are */}

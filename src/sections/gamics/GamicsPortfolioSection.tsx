@@ -8,28 +8,32 @@ export default function GamicsPortfolioSection() {
       image: '/gamics/featured-game-1.jpg',
       title: 'Bingo',
       titleHighlight: 'Multiplayer',
-      platform: 'Web, Mobile'
+      platform: 'Web, Mobile',
+      description: 'A fun multiplayer bingo experience.'
     },
     {
       id: 2,
       image: '/gamics/featured-game-2.jpg',
       title: 'Studio',
       titleHighlight: 'Branding',
-      platform: 'UI/UX, Identity'
+      platform: 'UI/UX, Identity',
+      description: 'Complete brand identity and web design.'
     },
     {
       id: 3,
       image: '/gamics/featured-game-3.jpg',
       title: 'E-Commerce',
       titleHighlight: 'Platform',
-      platform: 'Web Application'
+      platform: 'Web Application',
+      description: 'Scalable e-commerce solution.'
     },
     {
       id: 4,
       image: '/gamics/featured-game-4.jpg',
       title: 'Cloud',
       titleHighlight: 'Infrastructure',
-      platform: 'DevOps, Hosting'
+      platform: 'DevOps, Hosting',
+      description: 'Secure cloud hosting architecture.'
     }
   ];
 

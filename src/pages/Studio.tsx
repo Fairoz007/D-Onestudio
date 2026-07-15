@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Gamepad2, Code2, Paintbrush, Music, Users, FlaskConical } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function Studio() {
   useEffect(() => {
@@ -8,6 +9,11 @@ export default function Studio() {
 
   return (
     <div className="pt-32 pb-24 bg-background min-h-screen">
+      <Helmet>
+        <title>Our Studio & Technology | D-One Studio</title>
+        <meta name="description" content="Explore D-One Studio's game design, programming, art, and technology stack including Unreal Engine, Unity, and modern tools." />
+        <link rel="canonical" href="https://d-onestudio.com/studio" />
+      </Helmet>
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl animate-fade-in-up">
         
         {/* What We Do */}

@@ -6,7 +6,8 @@ export default function GamicsServicesSection() {
       badge: 'Development',
       title: 'Web & App',
       titleHighlight: 'Solutions',
-      description: 'Building scalable modern apps'
+      description: 'Building scalable modern apps',
+      price: 'Contact Us'
     },
     {
       id: 2,
@@ -14,7 +15,8 @@ export default function GamicsServicesSection() {
       badge: 'Design',
       title: 'UI/UX',
       titleHighlight: 'Experiences',
-      description: 'User-centric interface design'
+      description: 'User-centric interface design',
+      price: 'Contact Us'
     },
     {
       id: 3,
@@ -22,7 +24,8 @@ export default function GamicsServicesSection() {
       badge: 'Infrastructure',
       title: 'Cloud',
       titleHighlight: 'Architecture',
-      description: 'Secure & reliable hosting'
+      description: 'Secure & reliable hosting',
+      price: 'Contact Us'
     }
   ];
 

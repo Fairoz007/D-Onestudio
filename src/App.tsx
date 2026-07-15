@@ -8,6 +8,7 @@ import Careers from './pages/Careers'
 import Blog from './pages/Blog'
 import Founder from './pages/Founder'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/founder" element={<Founder />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <GamicsFooter />

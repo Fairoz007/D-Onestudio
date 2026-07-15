@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 export default function Founder() {
   useEffect(() => {
@@ -7,6 +8,11 @@ export default function Founder() {
 
   return (
     <div className="pt-32 pb-24 bg-background min-h-screen">
+      <Helmet>
+        <title>Fairoz Faisal - Founder | D-One Studio</title>
+        <meta name="description" content="Meet Fairoz Faisal, the founder and creative director of D-One Studio. Learn about his vision for original gaming experiences and technical innovation." />
+        <link rel="canonical" href="https://d-onestudio.com/founder" />
+      </Helmet>
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl animate-fade-in-up">
         
         <div className="grid lg:grid-cols-2 gap-16 items-center">

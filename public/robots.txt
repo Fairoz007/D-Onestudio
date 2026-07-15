@@ -23,5 +23,5 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
-# Uncomment and update the line below once the site is deployed:
-# Sitemap: https://yourdomain.com/sitemap.xml
+# Sitemap
+Sitemap: https://d-onestudio.com/sitemap.xml

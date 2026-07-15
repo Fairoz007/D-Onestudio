@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Mail, Briefcase, Users } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {
   useEffect(() => {
@@ -8,6 +9,11 @@ export default function Contact() {
 
   return (
     <div className="pt-32 pb-24 bg-background min-h-screen">
+      <Helmet>
+        <title>Contact Us | D-One Studio</title>
+        <meta name="description" content="Get in touch with D-One Studio. Contact us for general inquiries, business partnerships, or career opportunities." />
+        <link rel="canonical" href="https://d-onestudio.com/contact" />
+      </Helmet>
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl animate-fade-in-up">
         
         {/* Header */}

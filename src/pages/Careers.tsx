@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router';
+import { Helmet } from 'react-helmet-async';
 
 export default function Careers() {
   useEffect(() => {
@@ -22,6 +23,11 @@ export default function Careers() {
 
   return (
     <div className="pt-32 pb-24 bg-background min-h-screen">
+      <Helmet>
+        <title>Careers | D-One Studio</title>
+        <meta name="description" content="Build the future with D-One Studio. See open positions and opportunities for gameplay programmers, artists, and designers." />
+        <link rel="canonical" href="https://d-onestudio.com/careers" />
+      </Helmet>
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl animate-fade-in-up">
         
         {/* Header */}
